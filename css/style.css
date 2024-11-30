@@ -1,0 +1,440 @@
+:root{
+    --dark: #0f0000;
+    --light: #fff;
+    --red: #ff0000;
+    --green: #00ff00;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: var(--dark);
+    background-image: url(/img/bc.jpg);
+    background-size: cover;
+    height: cover;
+    background-repeat: no-repeat;
+}
+
+.header{
+    width: 100vw;
+    height: 3em;
+    background: var(--light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid var(--red);
+    font-family: "Briem Hand", cursive;
+    font-optical-sizing: auto;
+    animation: navbar 1s linear 1 forwards;
+    z-index: 3;
+}
+
+@keyframes navbar{
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+.header em{
+    margin-left: 1em;
+    color: var(--red);
+    font-size: 1.3em;
+    font-weight: bolder;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.header em:hover{
+    transform: scale(1.1);
+    transition: 1s linear;
+}
+
+.header .em span{
+    margin: 0 1em;
+}
+
+.header .h-links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 3;
+}
+
+.header .h-links li{
+    list-style: none;
+    margin: 0 0.5em;
+    position: relative;
+}
+
+.header .h-links li:hover::before{
+    content: '';
+    height: 0.2em;
+    background-color: var(--dark);
+    position: absolute;
+    top: 100%;
+    animation: under 0.3s linear 1 forwards;
+}
+
+@keyframes under{
+    0%{
+        padding-right: 0%;
+    }
+    100%{
+        padding-right: 100%;
+    }
+}
+
+.header .h-links li:hover a{
+    color: var(--dark);
+}
+
+.header .h-links li a{
+    text-decoration: none;
+    color: var(--red);
+    font-weight: bolder;
+}
+
+.header .menu{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    margin-right: 1em;
+    width: 4em;
+    height: 3em;
+    border-radius: 1em;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.header .menu:hover span{
+    width: 50%;
+}
+
+.header .menu:hover span:nth-child(2){
+    width: 70%;
+}
+
+.header .menu span{
+    margin: 0.1em 0.4em;
+    background-color: var(--red);
+    width: 70%;
+    height: 20%;
+    transition: 0.5s linear;
+}
+
+.header .menu span:nth-child(2){
+    width: 50%;
+}
+
+.header .toggle-menu{
+    display: none;
+    width: 98.7%;
+    border-radius: 1em;
+    height: 6em;
+    background-color: var(--light);
+    position: absolute;
+}
+
+.header .toggle-menu.active{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: toggled 1s linear 1 forwards;
+}
+
+.header .toggle-menu.inactive{
+    display: flex;
+    animation: nottoggled 1s linear 1 forwards;
+} 
+
+.header .toggle-menu.inactive ul{
+    display: none;
+}
+
+.toggle-menu ul{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toggle-menu ul li{
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 0.5em;
+    background: linear-gradient(45deg, var(--dark),#000ff0,var(--dark));
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle-menu ul li:nth-child(2){
+    background: linear-gradient(45deg, #f9ce34,#ee2a7b,#6228d7)
+}
+
+.toggle-menu ul li:nth-child(3){
+    background: linear-gradient(45deg, var(--dark),#6228d7,var(--dark));
+}
+
+.toggle-menu ul li:nth-child(4){
+    background: linear-gradient(180deg,var(--dark),var(--green),var(--dark));
+}
+
+.toggle-menu ul li:hover{
+    padding-right: 7em;
+    transition: 0.5s linear;
+}
+
+.toggle-menu ul li i{
+    color: #0505ff;
+    font-size: 2.5em;
+    width: 1.35em;
+    height: 1.2em;
+    border-radius: 2em;
+    border: 4px solid #000ff0;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-menu ul li:nth-child(2) i{
+    color: var(--light);
+    background: linear-gradient(45deg, #f9ce34,#ee2a7b,#6228d7);
+    border: 4px solid var(--light);
+}
+
+.toggle-menu ul li:nth-child(3) i{
+    color: var(--dark);
+    background: var(--light);
+    border: 4px solid var(--light);
+}
+
+.toggle-menu ul li:nth-child(4) i{
+    color: var(--dark);
+    background: var(--light);
+    border: 4px solid var(--red);
+}
+
+.toggle-menu ul li a{
+    display: none;
+}
+
+.toggle-menu ul li:hover a{
+    display: block;
+    position: absolute;
+    right: 1em;
+    color: var(--light);
+    font-weight: bolder;
+    text-decoration: none;
+    animation: togglelink 1s ease 1 forwards;
+}
+
+.toggle-menu ul li:nth-child(4):hover a{
+    color: var(--red);
+}
+
+@keyframes togglelink{
+    0%{
+        opacity: 0%;
+    }
+    30%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+@keyframes nottoggled{
+    0%{
+        display: flex;
+        top: 3.5em;
+        z-index: 1;
+    }
+    15%{
+        background: var(--light);
+    }
+    100%{
+        top: -7em;
+        z-index: -1;
+        display: none;
+        background: none;
+    }
+}
+
+@keyframes toggled{
+    0%{
+        top: -7em;
+        z-index: -1;
+        background: none;
+    }
+    99%{
+        z-index: -1;
+        border-bottom: transparent;
+        border-right: transparent;
+        border-left: transparent;
+    }
+    100%{
+        top: 3.5em;
+        z-index: 1;
+        border-bottom: 4px solid var(--red);
+        border-right: 6px solid var(--red);
+        border-left: 5px solid var(--red);
+    }
+}
+
+.main{
+    width: 100vw;
+    padding-bottom: 44vh;
+}
+
+.container{
+    width: 100vw;
+    padding-top: 10em;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo{
+    color: var(--red);
+    font-size: 13em;
+    margin-bottom: 0.2em;
+    cursor: cell;
+}
+
+.container .forms{
+    width: 50%;
+    height: 3em;
+    background-color: var(--light);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 1em;
+    box-shadow: 10px 10px 10px 10px var(--dark);
+    position: relative;
+}
+
+.container .forms.foc{
+    border: 3px solid var(--red);
+}
+
+.container .forms input{
+    width: 79%;
+    padding-left: 2em;
+    margin-left: 1em;
+    height: 80%;
+    outline: none;
+    border: none;
+}
+
+.container .forms input::placeholder{
+    color: var(--red);
+    font-family: "Madimi One", sans-serif;
+    font-weight: bolder;
+}
+
+.container .forms button{
+    width: 6em;
+    height: 70%;
+    cursor: pointer;
+    background-color: var(--red);
+    border-radius: 1em;
+    color: var(--light);
+    border: none;
+    position: absolute;
+    right: 2%;
+    z-index: 2;
+}
+
+.container .forms button:hover{
+    background-color: var(--dark);
+    color: var(--red);
+    border: 2px solid var(--red);
+    transition: 0.5s linear;
+}
+
+.lyrics{
+    color: var(--red);
+    font-family: "Briem Hand", cursive;
+    font-weight: bolder;
+    font-size: 1.2em;
+    margin: 1em 0;
+}
+
+.output{
+    width: 50%;
+    height: 75vh;
+    margin-top: 2em;
+    background-color: var(--light);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 10px 10px 10px 10px var(--dark);
+}
+
+.o-header{
+    width: 95%;
+    height: 3em;
+    margin: 1em 0;
+    border-radius: 1em;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border:2px solid var(--red);
+}
+
+.o-header span{
+    font-size: 1em;
+    font-weight: bolder;
+    font-family: "Briem Hand", cursive;
+    margin: 0 1em;
+    cursor: pointer;
+    color: var(--red);
+    position: relative;
+}
+
+.o-header span:hover{
+    color: var(--dark);
+}
+
+.o-header span:hover::before{
+    content: '';
+    height: 0.2em;
+    background-color: var(--dark);
+    position: absolute;
+    top: 100%;
+    animation: under 0.3s linear 1 forwards;
+}
+
+.o-content{
+    width: 95%;
+    height: 85%;
+    background-color: #f0f0f0;
+    border-radius: 1em;
+    border: 2px solid var(--red);
+    overflow-y: scroll;
+}
+
+.o-content .o-result{
+    font-family: "Madimi One", sans-serif;
+    font-weight: 600;
+    margin-left: 1em;
+}
